@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title Page</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="text-center">
+            <h1>Quản Lý Công Việc</h1>
+            <hr/>
+        </div>
+        <div class="row main">
+            <div id="mForm" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <div class="panel panel-warning">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Thêm Công Việc</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form>
+                            <div class="form-group">
+                                <label>Tên :</label>
+                                <input type="text" class="form-control" />
+                            </div>
+                            <label>Trạng Thái :</label>
+                            <select class="form-control" required="required">
+                                <option value="1">Kích Hoạt</option>
+                                <option value="0">Ẩn</option>
+                            </select>
+                            <br/>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-warning">Thêm</button>
+                                <a href="#" class="btn btn-danger">Hủy Bỏ</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div id="list" class="col-xs-8 col-sm-8 col-md-8 col-lg-8">                
+                    <a href="#" class="btn btn-primary">Thêm Công Việc</a>                
+                <div class="row mt-15">
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Nhập từ khóa..." />
+                            <span class="input-group-btn">
+                                <a class="btn btn-primary" href="#">Tìm</a>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                Sắp Xếp <span class="fa fa-caret-square-o-down ml-5"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <li>
+                                    <a role="button">
+                                                <span class="fa fa-sort-alpha-asc pr-5">
+                                                    Tên A-Z
+                                                </span>
+                                            </a>
+                                </li>
+                                <li>
+                                    <a role="button">
+                                                <span class="fa fa-sort-alpha-desc pr-5">
+                                                    Tên Z-A
+                                                </span>
+                                            </a>
+                                </li>
+                                <li role="separator" class="divider"></li>
+                                <li><a role="button">Trạng Thái Kích Hoạt</a></li>
+                                <li><a role="button">Trạng Thái Ẩn</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-15">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <table id="tbl" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">STT</th>
+                                    <th class="text-center">Tên</th>
+                                    <th class="text-center">Trạng Thái</th>
+                                    <th class="text-center">Hành Động</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input type="text" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <select class="form-control">
+                                            <option value="-1">Tất Cả</option>
+                                            <option value="0">Ẩn</option>
+                                            <option value="1">Kích Hoạt</option>
+                                        </select>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr id="item">
+                                    <td>1</td>
+                                    <td>Học lập trình</td>
+                                    <td class="text-center">
+                                        <span class="label label-success stt">
+                                                    Kích Hoạt
+                                                </span>
+                                    </td>
+                                    <td id="itemControl" class="text-center">
+                                        <a href="#" class="btn btn-warning">Sửa</a>
+                                        <a href="#" class="btn btn-danger">Xoá</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+/*ALL*/
+#tbl th,
+#tbl td{
+	vertical-align: middle;
+	text-align: center;
+}
+.mt-15{
+	margin-top: 15px;
+}
+#item td .stt{
+	padding: .5em .6em .5em;
+}
+/*PC*/
+@media(min-width: 1281px){
+
+}
+/*IPAD*/
+@media(min-width: 740px) and (max-width: 1280px){
+	#itemControl{
+		display: flex;
+		flex-direction: column;
+		padding: 15px 5px;
+	}
+	#itemControl a:first-child{
+		margin-bottom: 5px
+	}
+}
+/*MOBILE?*/
+@media(max-width: 739px){
+	.form-control{
+		padding: 6px;
+	}
+	#item td .stt{
+		padding: .8em .6em .8em;
+	}
+	#itemControl{
+		display: flex;
+		flex-direction: column;
+		padding: 15px 5px;
+	}
+	#itemControl a:first-child{
+		margin-bottom: 5px
+	}
+	.main{
+		display: flex;
+		flex-direction: column-reverse;
+	}
+	#mForm.col-xs-4,
+	#mForm.col-sm-4, 
+	#mForm.col-md-4, 
+	#mForm.col-lg-4{
+		width: 100%;
+	}
+	#list.col-xs-8,
+	#list.col-sm-8,
+	#list.col-md-8,
+	#list.col-lg-8{
+		width: 100%;
+	}
+
+}
