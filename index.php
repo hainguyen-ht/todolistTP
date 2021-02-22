@@ -9,7 +9,14 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/responsive.css">
 </head>
+<?php 
+    require_once 'app/function.php';
+    require_once 'app/action.php';
+    $nSubmit = $action;
+    $uID = ($nSubmit === 'edit') ? '/?id='.$id : null;
+    
 
+?>
 <body>
     <div class="container">
         <div class="text-center">
@@ -17,41 +24,43 @@
             <hr/>
         </div>
         <div class="row main">
-            <div id="mForm" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <div id="mForm" class="<?php echo $sForm ?>">
                 <div class="panel panel-warning">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Thêm Công Việc</h3>
+                        <h3 class="panel-title"><?php echo $textForm  ?></h3>
                     </div>
                     <div class="panel-body">
-                        <form>
+                        <form method="POST" action="app/action/<?php echo $nSubmit?>.php<?php echo $uID ?>">
                             <div class="form-group">
                                 <label>Tên :</label>
-                                <input type="text" class="form-control" />
+                                <input name="detail" type="text" class="form-control" required="required" value="<?php echo $vInput ?>" />
                             </div>
                             <label>Trạng Thái :</label>
-                            <select class="form-control" required="required">
-                                <option value="1">Kích Hoạt</option>
-                                <option value="0">Ẩn</option>
+                            <select name="status" class="form-control" required="required">
+                                <option value="1" <?php echo $vChecked = $vChecked ? 'selected' : '' ?>>Kích Hoạt</option>
+                                <option value="0" <?php echo $vChecked = $vChecked ? '' : 'selected' ?>>Ẩn</option>
                             </select>
                             <br/>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-warning">Thêm</button>
-                                <a href="#" class="btn btn-danger">Hủy Bỏ</a>
+                                <button name="<?php echo $nSubmit ?>" type="submit" class="btn btn-warning"><?php echo $textBtn ?></button>
+                                <a href="?action=cancel" class="btn btn-danger">Hủy Bỏ</a>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-            <div id="list" class="col-xs-8 col-sm-8 col-md-8 col-lg-8">                
-                    <a href="#" class="btn btn-primary">Thêm Công Việc</a>                
+            <div id="list" class="<?php echo $fMain ?>">                
+                    <a href="?action=add" class="btn btn-primary">Thêm Công Việc</a>                
                 <div class="row mt-15">
                     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Nhập từ khóa..." />
-                            <span class="input-group-btn">
-                                <a class="btn btn-primary" href="#">Tìm</a>
-                            </span>
-                        </div>
+                        <form action="?action=search" method="POST">
+                            <div class="input-group">
+                                <input type="text" name="iSearch" class="form-control" placeholder="Nhập từ khóa..." />
+                                <span class="input-group-btn">
+                                    <button type="submit" name="search" class="btn btn-primary">Tìm</button>
+                                </span>
+                            </div>
+                        </form>
                     </div>
                     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                         <div class="dropdown">
@@ -60,22 +69,22 @@
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                                 <li>
-                                    <a role="button">
+                                    <a href="?action=sort&&sort=az" role="button">
                                                 <span class="fa fa-sort-alpha-asc pr-5">
                                                     Tên A-Z
                                                 </span>
                                             </a>
                                 </li>
                                 <li>
-                                    <a role="button">
+                                    <a href="?action=sort&&sort=za" role="button">
                                                 <span class="fa fa-sort-alpha-desc pr-5">
                                                     Tên Z-A
                                                 </span>
                                             </a>
                                 </li>
                                 <li role="separator" class="divider"></li>
-                                <li><a role="button">Trạng Thái Kích Hoạt</a></li>
-                                <li><a role="button">Trạng Thái Ẩn</a></li>
+                                <li><a href="?action=sort&&sort=show" role="button">Trạng Thái Kích Hoạt</a></li>
+                                <li><a href="?action=sort&&sort=hide" role="button">Trạng Thái Ẩn</a></li>
                             </ul>
                         </div>
                     </div>
@@ -106,19 +115,10 @@
                                     </td>
                                     <td></td>
                                 </tr>
-                                <tr id="item">
-                                    <td>1</td>
-                                    <td>Học lập trình</td>
-                                    <td class="text-center">
-                                        <span class="label label-success stt">
-                                                    Kích Hoạt
-                                                </span>
-                                    </td>
-                                    <td id="itemControl" class="text-center">
-                                        <a href="#" class="btn btn-warning">Sửa</a>
-                                        <a href="#" class="btn btn-danger">Xoá</a>
-                                    </td>
-                                </tr>
+
+                                <?php
+                                    require_once 'app/action/show.php';
+                                ?>
                             </tbody>
                         </table>
                     </div>

@@ -1,4 +1,7 @@
 /*ALL*/
+.hide{
+	display: none;
+}
 #tbl th,
 #tbl td{
 	vertical-align: middle;
